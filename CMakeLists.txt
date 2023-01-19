@@ -9,6 +9,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(example_interfaces REQUIRED)
+find_package(udemy_interfaces REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -30,6 +31,9 @@ ament_target_dependencies(add_two_ints_client_no_oop rclcpp example_interfaces)
 add_executable(add_two_ints_client src/add_two_ints_client.cpp)
 ament_target_dependencies(add_two_ints_client rclcpp example_interfaces)
 
+add_executable(hardware_status_publisher src/hardware_status_publisher.cpp)
+ament_target_dependencies(hardware_status_publisher rclcpp udemy_interfaces)
+
 install(TARGETS
   cpp_node
   robot_news_station
@@ -37,6 +41,7 @@ install(TARGETS
   add_two_ints_server
   add_two_ints_client_no_oop
   add_two_ints_client
+  hardware_status_publisher
   DESTINATION lib/${PROJECT_NAME}
 )
 
